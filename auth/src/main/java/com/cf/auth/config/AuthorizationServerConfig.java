@@ -40,7 +40,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         clients
                 .inMemory()
                 .withClient("client")
-                .authorizedGrantTypes("authorization_code")
+                .authorizedGrantTypes("password","authorization_code","refresh_token")
                 .secret("123456")
                 .scopes("read")
                 .autoApprove("read")
@@ -54,6 +54,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .tokenStore(redisTokenStore())
                 .authenticationManager(authenticationManager)
                 .userDetailsService(userDetailsService)
+                .reuseRefreshTokens(false)
                 .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST)
 
         ;
