@@ -1,0 +1,15 @@
+server:
+  port: 7000
+  context-path: /sso
+
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: 123456
+      user-authorization-uri: http://localhost:9000/auth/oauth/authorize
+      access-token-uri: http://localhost:9000/auth/oauth/token
+      scope: read
+      authorized-grant-types: authorization_code
+    resource:
+      token-info-uri: http://localhost:9000/auth/user
