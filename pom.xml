@@ -51,7 +51,7 @@
     <!--公共依赖-->
     <dependencies>
 
-        <!--监控-->
+        <!--监控  不加，sso客户端不会自动跳转到授权服务器登录-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
