@@ -13,3 +13,5 @@ security:
       authorized-grant-types: authorization_code
     resource:
       token-info-uri: http://localhost:9000/auth/user
+logging:
+  level: debug

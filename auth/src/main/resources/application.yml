@@ -1,3 +1,12 @@
 server:
   port: 9000
   context-path: /auth
+security:
+  basic:
+    enabled: false
+spring:
+  redis:
+    host: 127.0.0.1
+    password: paascloud@redis
+    port: 6379
+    remote: false

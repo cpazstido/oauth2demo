@@ -18,6 +18,8 @@ public class SecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .permitAll()
 //                .authenticated()
+                .and()
+                .csrf().disable();
         ;
     }
 }
