@@ -32,6 +32,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security
+                .tokenKeyAccess("permitAll()")
+                .checkTokenAccess("isAuthenticated()")
                 .allowFormAuthenticationForClients();
     }
 
@@ -45,6 +47,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .scopes("read")
                 .autoApprove("read")
                 .authorities("admin")
+                .redirectUris("http://localhost:7000/sso/login")
         ;
     }
 
@@ -63,7 +66,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Bean
     public TokenStore redisTokenStore() {
         RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
-        tokenStore.setPrefix("cf_");
+//        tokenStore.setPrefix("cf_");
         return tokenStore;
     }
 }

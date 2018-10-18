@@ -15,9 +15,9 @@ public class SecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
 //                .loginPage("http://www.baidu.com")
                 .and()
                 .authorizeRequests()
-                .anyRequest()
-                .permitAll()
-//                .authenticated()
+                    .antMatchers("/oauth/**").permitAll()
+                    .antMatchers("/user").permitAll()
+                    .anyRequest().authenticated()
                 .and()
                 .csrf().disable();
         ;

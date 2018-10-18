@@ -10,3 +10,5 @@ spring:
     password: paascloud@redis
     port: 6379
     remote: false
+logging:
+  level: debug
