@@ -31,7 +31,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         clients
                 .inMemory()
                 .withClient("client")
-                .authorizedGrantTypes("authorization_code")
+                .authorizedGrantTypes("password")
                 .secret("123456")
                 .scopes("read")
                 .autoApprove("read")
