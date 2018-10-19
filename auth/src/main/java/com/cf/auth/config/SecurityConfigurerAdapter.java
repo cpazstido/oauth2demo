@@ -12,7 +12,6 @@ public class SecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .formLogin()
-//                .loginPage("http://www.baidu.com")
                 .and()
                 .authorizeRequests()
                     .antMatchers("/oauth/**").permitAll()

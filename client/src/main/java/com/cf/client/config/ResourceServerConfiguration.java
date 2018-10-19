@@ -17,18 +17,17 @@
 
 package com.cf.client.config;
 
+import org.springframework.boot.autoconfigure.security.oauth2.resource.ResourceServerProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.oauth2.client.OAuth2ClientContext;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
 
-/**
- * @author lengleng
- * @date 2018年1月31日23:15:08
- * 当前配置 暴露监控信息
- */
 @Configuration
 @EnableResourceServer
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
@@ -43,12 +42,11 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
     }
 
     @Bean
-    public RemoteTokenServices tokenService() {
+    public RemoteTokenServices tokenService(OAuth2ProtectedResourceDetails details, ResourceServerProperties resourceServerProperties) {
         RemoteTokenServices tokenService = new RemoteTokenServices();
-        tokenService.setCheckTokenEndpointUrl(
-                "http://localhost:9000/auth/oauth/check_token");
-        tokenService.setClientId("client");
-        tokenService.setClientSecret("123456");
+        tokenService.setCheckTokenEndpointUrl(resourceServerProperties.getUserInfoUri());
+        tokenService.setClientId(details.getClientId());
+        tokenService.setClientSecret(details.getClientSecret());
         return tokenService;
     }
 }

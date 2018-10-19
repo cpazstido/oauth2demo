@@ -13,9 +13,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
-import sun.security.util.SecurityConstants;
 
 @Configuration
 @EnableAuthorizationServer
@@ -66,7 +64,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Bean
     public TokenStore redisTokenStore() {
         RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
-//        tokenStore.setPrefix("cf_");
         return tokenStore;
     }
 }

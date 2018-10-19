@@ -12,7 +12,4 @@ security:
       scope: read
       authorized-grant-types: authorization_code
     resource:
-      user-info-uri: http://localhost:9000/auth/user
-
-logging:
-  level: debug
+      user-info-uri: http://localhost:9000/auth/oauth/check_token
