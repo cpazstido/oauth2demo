@@ -43,9 +43,18 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .authorizedGrantTypes("password","authorization_code","refresh_token")
                 .secret("123456")
                 .scopes("read")
-                .autoApprove("read")
+//                .autoApprove("read")
                 .authorities("admin")
-                .redirectUris("http://localhost:7000/sso/login")
+                .redirectUris("http://localhost:7000/sso")
+                .and()
+
+                .withClient("client2")
+                .authorizedGrantTypes("password","authorization_code","refresh_token")
+                .secret("123456")
+                .scopes("write")
+//                .autoApprove("read")
+                .authorities("admin")
+                .redirectUris("http://localhost:6000/sso2")
         ;
     }
 

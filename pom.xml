@@ -67,6 +67,7 @@
     <modules>
         <module>auth</module>
         <module>client</module>
+        <module>client2</module>
     </modules>
 
     <dependencyManagement>
